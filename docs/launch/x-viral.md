@@ -2,11 +2,13 @@
 
 ## FINAL PICK (validated 2026-09-20: numbers vs BENCHMARK.md, no em dashes/arrows/hedges, char limits)
 
-### Reply under Rafal (post first) = C-B, 234 chars
+### Reply under Rafal (post first) = comparison reply, 234 chars
 
 WHERE: https://x.com/rafalwilinski/status/2100882207879434359 -> click Reply on his post (not Quote, not a new post). Log in as your own account first.
 
-Built the open-source version: jevqa. No tests to write: URL + README, 5–6 minutes, $0.29–0.41/app. Across 20 apps it found 22% of 107 bugs. About 1 in 8 reports is real; weak on numbers and permissions. https://github.com/Todmy/jevqa
+Open-sourced the same idea: jevqa. On 10 WebTestBench apps it found 24% of known bugs at $0.37/app. Claude Opus 5: 17% at $3.20. Sonnet 5: 10% at $1.16. About 1 in 8 reports is real, and we publish that. https://github.com/Todmy/jevqa
+
+If asked about tuning: jevqa was tuned on those 10 apps, Opus/Sonnet were not; on the untouched holdout it finds 18-20%. Full table in BENCHMARK.md.
 
 ### Standalone post (30 min later) = A-B, 263 chars
 
