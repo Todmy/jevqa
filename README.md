@@ -8,6 +8,8 @@ Point it at a deployed web app and the README it was built from. It explores the
 uvx jevqa run http://localhost:3000 --spec README.md
 ```
 
+![jevqa run: checklist, exploration, flags, report.md](docs/demo.gif)
+
 No selectors. No test scripts. Nothing to maintain. The first run asks for two API keys and remembers them.
 
 → **[See a real report](examples/blog-app/report.md)** from a blog app: 7 findings in 269 seconds, two of them confirmed bugs (no way to edit posts, no way to publish).
