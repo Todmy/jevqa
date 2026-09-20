@@ -1,0 +1,7 @@
+{
+ "error_shown": "Does `after.text` show an error, stack trace, or failure notice NOT in `before.text` that is NOT a normal client-side validation message correctly describing the user's own incomplete/invalid input (e.g. 'Last Name is required' after submitting with that field empty is expected, not a bug)?",
+ "action_ignored": "Given `action` and the change from `before.text` to `after.text`, did the UI fail to react as the action's label promises, EXCLUDING: actions on external/social links (Facebook, LinkedIn, X/Twitter) opening a new tab; 'Add to cart'/'Remove' clicks whose only unmet expectation is cart badge count (already tracked); AND text-input actions where `after.text`'s field value snapshot cannot be trusted to reflect live typed state (only flag if a DIFFERENT, unexpected value appears in that field, not merely an unchanged/empty one)?",
+ "inconsistent_state": "Does `after.text` contain data that contradicts itself or the action (e.g. wrong item shown, counts that do not match the visible list, wrong page for the action)?",
+ "broken_content": "Does `after.text` show placeholder text, missing labels, untranslated keys, or broken layout that is NOT simply the tester's own typed input being echoed back, and NOT normal menu/nav items (e.g. 'Dynamic Catalog', 'Lazy Load', 'Spinner', 'Slider') that are legitimate labels rather than garbled output?",
+ "dead_end": "Is the user now stuck: no visible way to continue or go back to the main flow from `after.text`?"
+}

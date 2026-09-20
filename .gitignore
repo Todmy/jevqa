@@ -1,0 +1,5 @@
+.venv/
+jevqa-runs/
+__pycache__/
+*.egg-info/
+dist/

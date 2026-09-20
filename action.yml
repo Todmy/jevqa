@@ -1,0 +1,42 @@
+name: jevqa
+description: Autonomous pre-QA bug hunt of a deployed web app (Jev + Claude), report.md with screenshots as a workflow artifact
+inputs:
+  url:
+    description: URL of the deployed app to test
+    required: true
+  spec:
+    description: Path to the spec / PRD / README the app was built from
+    required: true
+  steps:
+    description: Action budget
+    default: "50"
+  python-version:
+    default: "3.12"
+outputs:
+  report:
+    description: Path to report.md
+    value: ${{ steps.run.outputs.report }}
+  findings:
+    description: Number of findings
+    value: ${{ steps.run.outputs.findings }}
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-python@v5
+      with:
+        python-version: ${{ inputs.python-version }}
+    - shell: bash
+      run: |
+        pip install -q "jevqa @ git+https://github.com/${{ github.action_repository || 'Todmy/jevqa' }}@${{ github.action_ref || 'main' }}"
+        python -m playwright install --with-deps chromium
+    - id: run
+      shell: bash
+      run: jevqa run "${{ inputs.url }}" --spec "${{ inputs.spec }}" --steps "${{ inputs.steps }}" --out jevqa-runs
+    - uses: actions/upload-artifact@v4
+      with:
+        name: jevqa-report
+        path: jevqa-runs
+    - shell: bash
+      run: |
+        echo "## jevqa: ${{ steps.run.outputs.findings }} findings" >> "$GITHUB_STEP_SUMMARY"
+        sed 's/^!\[.*//' "${{ steps.run.outputs.report }}" >> "$GITHUB_STEP_SUMMARY"

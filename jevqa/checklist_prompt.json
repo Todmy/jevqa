@@ -1,0 +1,40 @@
+{
+ "instructions": "You are writing the QA checklist for a spec\u2192checklist generator being trained on synthetic CRUD-app data. Given a one-paragraph product spec, output 15-30 checklist items \u2014 the exact list a meticulous manual QA engineer would run against a live build of this spec.\n\nRules for each item:\n- One observable behavior per item: a concrete user action + the exact, visible result that must follow (state changed, value displayed, error shown, nothing else affected).\n- Never invent a feature, field, role, or workflow the spec doesn't state or clearly imply. If the spec doesn't mention permissions, don't test permissions.\n- Write like a human QA engineer filing a ticket, not like a requirements doc: plain, specific, occasionally blunt (\"X does not happen\" rather than \"X should occur\").\n\nCover the full surface, in roughly this order:\n1. **Entity lifecycle** \u2014 for every entity the spec implies (not just the primary one): create with valid data \u2192 appears immediately in the right list/view with the right fields; edit \u2192 updates in place, no duplicate; delete \u2192 disappears everywhere, including from any total/summary/report that referenced it.\n2. **Validation & boundaries** \u2014 required fields, invalid values (empty, negative, zero, duplicate), and what visible error appears; don't just assert \"an error occurs,\" assert the record is NOT saved.\n3. **Relationships between entities** \u2014 attaching/detaching one entity to another, cascade behavior on delete (orphaned data), and whether a newly created sub-entity becomes selectable elsewhere immediately.\n4. **List operations** \u2014 filter (single and combined), sort, search, clear filters, and counts (item count matches rows shown).\n5. **Derived data integrity** \u2014 sums, totals, charts, forecasts, reports: verify they match the underlying records and update live when a source record changes.\n6. **Cross-view consistency & navigation** \u2014 moving between list/detail/report views without losing filters or data, detail view shows the full record.\n7. **Roles/permissions** \u2014 only if the spec explicitly names more than one role; test that the restricted action is blocked/hidden for the wrong role and available for the right one.\n8. **Feedback** \u2014 confirmations on save/delete, and that failed actions show specific (not generic) errors.\n\nPrioritize items that exercise an edit operation, a delete-cascade, a confirmation message, or a derived total \u2014 these are the categories most likely to be wrong in a real implementation, so a checklist that skips them isn't doing its job. Vary phrasing and structure across items so the list doesn't read as a template filled in per-entity.",
+ "demos": [
+  {
+   "spec": "I want a community forum where users can register, create profiles with a short bio and interests, start and reply to discussion threads in different categories, and upvote or like helpful posts. People should be able to search for threads by keywords, filter by category, and see a list of trending or most active discussions over a recent period.",
+   "expectations": [
+    "New user can register with email/password and the account is created successfully",
+    "Registering with an already-used email shows a clear error and does not create a duplicate account",
+    "Registering with missing required fields (email/password) is blocked with a validation error",
+    "User can log in with valid credentials and reach their authenticated view",
+    "User can log out and is returned to a logged-out state",
+    "User can create/edit a profile with a short bio and a list of interests, and the saved values persist after page reload",
+    "Profile bio has an enforced length limit and rejects/trims text beyond it",
+    "User can start a new discussion thread by selecting a category, entering a title and body",
+    "A newly created thread appears in the correct category's thread list with correct title, author, and timestamp",
+    "Attempting to create a thread without a title, body, or category is blocked with a validation error",
+    "User can reply to an existing thread and the reply appears in the thread in correct chronological order",
+    "Reply count/timestamp on the thread list updates after a new reply is posted",
+    "User can upvote/like a post or reply once, and the like count increments by exactly one",
+    "User cannot upvote the same post multiple times (duplicate vote is prevented or toggles off)",
+    "Upvote counts are visible on both the thread list and the thread detail view",
+    "User can search threads by keyword and results include threads whose title or body match the keyword",
+    "Searching with a keyword that matches nothing returns an empty state, not an error",
+    "User can filter the thread list by category and only threads in that category are shown",
+    "Clearing the category filter returns the full unfiltered thread list",
+    "Trending/most-active list shows threads ranked by activity (replies/upvotes) within the stated recent period",
+    "Threads outside the trending period's window do not appear in the trending list even if highly active historically",
+    "Clicking a thread in the trending list navigates to that thread's full detail view",
+    "Navigating from the thread list to a thread detail page shows the full original post plus all replies",
+    "Navigating from a user's profile to their created threads (if listed) shows only threads authored by that user",
+    "Editing a thread or reply the user authored saves the updated content and displays it correctly afterward",
+    "Deleting a thread or reply the user authored removes it from the thread list/detail view",
+    "A logged-out user attempting to create a thread, reply, or upvote is prompted to register/log in instead",
+    "Category list/navigation shows all defined categories and selecting one shows only threads in that category",
+    "Submitting a thread or reply shows a confirmation (visual feedback) that the action succeeded",
+    "Invalid actions (e.g., empty search, malformed input) show a clear inline error rather than a silent failure or crash"
+   ]
+  }
+ ]
+}

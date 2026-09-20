@@ -1,0 +1,563 @@
+{
+ "run": "jevqa-runs/20260920-103054",
+ "steps": 50,
+ "user": "problem_user",
+ "states": 17,
+ "flagged_steps": 4,
+ "subgoals_done": [
+  "Archive page lists all months/years that have at least one published post, and clicking a month shows exactly the posts published that month",
+  "Each home page preview shows a short excerpt (not the full article) and clicking it navigates to the full article page",
+  "Submitting a comment with valid text on an article adds it to that article's comment list immediately, visible on reload",
+  "Browsing by topic (category) shows only posts in that category, and the count matches the number of rows displayed",
+  "Home page shows a distinct 'Featured' section separate from 'Most Recent', and both reflect actual published posts",
+  "A new series can be created, assigned to posts, and the series page lists posts in the correct order"
+ ],
+ "stalled": [
+  "The post is gone from home, archive, category, tag, series, and search results — no orphaned reference remains",
+  "Deleting an article removes all its comments and like counts from any aggregate/report view that might reference them",
+  "The admin/editor mode has visible controls for creating, editing, and deleting posts, categories, tags, and series (not just viewing)",
+  "Deleting a category either blocks the action with a warning or leaves its posts intact but uncategorized/reassigned, not deleted",
+  "Editing the post title updates it in place everywhere it's shown (home, archive, series page) with no duplicate entry",
+  "Liking a post twice from the same session doesn't double-count (either blocked or toggles back)",
+  "Related-post suggestions no longer include a post once that post is deleted",
+  "Removing a post from a series drops it from the series listing but the post itself still exists on the site",
+  "Comments on a post are removed when the post itself is deleted (no orphaned comment thread reachable elsewhere)",
+  "Unfeaturing a post removes it from the Featured section immediately, without affecting its normal listing elsewhere"
+ ],
+ "expectations": [
+  "The post is gone from home, archive, category, tag, series, and search results — no orphaned reference remains",
+  "Deleting an article removes all its comments and like counts from any aggregate/report view that might reference them",
+  "The admin/editor mode has visible controls for creating, editing, and deleting posts, categories, tags, and series (not just viewing)",
+  "Deleting a category either blocks the action with a warning or leaves its posts intact but uncategorized/reassigned, not deleted",
+  "Editing the post title updates it in place everywhere it's shown (home, archive, series page) with no duplicate entry",
+  "A new series can be created, assigned to posts, and the series page lists posts in the correct order",
+  "Liking a post twice from the same session doesn't double-count (either blocked or toggles back)",
+  "Related-post suggestions no longer include a post once that post is deleted",
+  "Removing a post from a series drops it from the series listing but the post itself still exists on the site",
+  "Comments on a post are removed when the post itself is deleted (no orphaned comment thread reachable elsewhere)",
+  "Unfeaturing a post removes it from the Featured section immediately, without affecting its normal listing elsewhere",
+  "Saving a post with no category assigned is either blocked with a validation error or the post correctly shows as uncategorized everywhere (verify which)",
+  "Search matches phrases as well as single keywords (multi-word phrase search returns relevant post, not unrelated ones)",
+  "Saving a post with an empty title is blocked with a validation error and no post is created",
+  "Submitting a comment with valid text on an article adds it to that article's comment list immediately, visible on reload",
+  "Submitting an empty comment is blocked with a validation error and no blank comment appears in the list",
+  "Related-post suggestions on an article page show other posts and clicking one navigates correctly, with no dead links",
+  "Most Recent section always reflects the latest publish date, reordering when a new post is published",
+  "Search for a keyword found in a post's title or body returns that post; search for a nonsense string returns an empty state, not an error or crash",
+  "Browsing by date (e.g. selecting a specific day/month) shows only posts published on/within that date range",
+  "Clicking 'like' on a post increments the like count by exactly one and reflects immediately in the UI",
+  "Browsing by topic (category) shows only posts in that category, and the count matches the number of rows displayed",
+  "The tag appears as a clickable filter and any post tagged with it shows up when that tag is selected",
+  "The category appears in the category navigation and can be selected as an option when creating/editing a post",
+  "Home page shows a distinct 'Featured' section separate from 'Most Recent', and both reflect actual published posts",
+  "Archive page lists all months/years that have at least one published post, and clicking a month shows exactly the posts published that month",
+  "The new post appears in the archive/list with correct title, category, tags, and date",
+  "A month/year with zero posts either doesn't appear in the archive or shows an empty state, not an error",
+  "The recipe post displays its full content including any ingredient/step formatting on its article page",
+  "Each home page preview shows a short excerpt (not the full article) and clicking it navigates to the full article page"
+ ],
+ "checked": [
+  "A new series can be created, assigned to posts, and the series page lists posts in the correct order",
+  "Archive page lists all months/years that have at least one published post, and clicking a month shows exactly the posts published that month",
+  "Browsing by topic (category) shows only posts in that category, and the count matches the number of rows displayed",
+  "Comments on a post are removed when the post itself is deleted (no orphaned comment thread reachable elsewhere)",
+  "Deleting a category either blocks the action with a warning or leaves its posts intact but uncategorized/reassigned, not deleted",
+  "Deleting an article removes all its comments and like counts from any aggregate/report view that might reference them",
+  "Each home page preview shows a short excerpt (not the full article) and clicking it navigates to the full article page",
+  "Editing the post title updates it in place everywhere it's shown (home, archive, series page) with no duplicate entry",
+  "Home page shows a distinct 'Featured' section separate from 'Most Recent', and both reflect actual published posts",
+  "Liking a post twice from the same session doesn't double-count (either blocked or toggles back)",
+  "Related-post suggestions no longer include a post once that post is deleted",
+  "Removing a post from a series drops it from the series listing but the post itself still exists on the site",
+  "Submitting a comment with valid text on an article adds it to that article's comment list immediately, visible on reload",
+  "The admin/editor mode has visible controls for creating, editing, and deleting posts, categories, tags, and series (not just viewing)",
+  "The post is gone from home, archive, category, tag, series, and search results — no orphaned reference remains",
+  "Unfeaturing a post removes it from the Featured section immediately, without affecting its normal listing elsewhere"
+ ],
+ "secs": 268.7,
+ "jev": {
+  "input_tokens": 326952,
+  "calls": 156,
+  "claude_usd": 0.6778044999999998,
+  "claude_calls": 4
+ },
+ "findings": [
+  {
+   "step": 15,
+   "state": "b3a3ad8317",
+   "how": "jev(0.23)",
+   "action": "form \"Post Comment\"",
+   "from": "/post/sunrise-over-angkor-wat",
+   "to": "/post/sunrise-over-angkor-wat",
+   "oracles": {
+    "error_shown": 0.07,
+    "action_ignored": 0.51,
+    "inconsistent_state": 0.78,
+    "broken_content": 0.49,
+    "dead_end": 0.1,
+    "invalid_accepted": 0.86,
+    "expectation_violated": 0.35,
+    "expectation_verified": 0.55
+   },
+   "flags": [
+    "invalid_accepted"
+   ],
+   "values": {
+    "Your name": "James Mitchell",
+    "Share your thoughts...": "Absolutely loved this post! The sunrise photography is breathtaking, and the cultural details about Angkor Wat really deepened my understanding of the site."
+   },
+   "rule": "duplicate: an identical record was just created, a second identical submit must be rejected",
+   "expectation": "Submitting a comment with valid text on an article adds it to that article's comment list immediately, visible on reload",
+   "form_blocked": false,
+   "diff": {
+    "url_changed": false,
+    "added_lines": [
+     "[field Your name='Absolutely loved this post! The sunrise photography is breathtaking, and the cultural details about Angkor Wat really deepened my understanding of the site.'] [field Share your thoughts...='']"
+    ],
+    "removed_lines": [
+     "Notification Comment posted!Thanks for joining the conversation.",
+     "[field Your name=''] [field Share your thoughts...='']"
+    ],
+    "counters_changed": {},
+    "changed": true
+   },
+   "evidence": {
+    "action": "form \"Post Comment\" (fill all 2 fields and submit) [invalid]",
+    "before": {
+     "url": "/post/sunrise-over-angkor-wat",
+     "text": "Comment posted!\nThanks for joining the conversation.\nWandering Words\nHome\nTravel Stories\nRecipes\nSelf Improvement\nArchive\nSearch\nBack to home\n✈️ Travel Stories\nPart of: Southeast Asia Adventure\nSunrise Over Angkor Wat: A Journey Through Time\nMaya Chen\nMarch 15, 2024\n8 min read\n\nThere's something magical about standing in complete darkness, surrounded by strangers from every corner of the world, all waiting for the same moment. The air was thick with anticipation and the sweet scent of lotus flowers from the nearby pond.\n\nThe Early Morning Rush\n\nGetting to Angkor Wat before sunrise requires dedication. My alarm went off at 3:45 AM, and despite every fiber of my being wanting to stay in the comfortable hotel bed, I forced myself up. The tuk-tuk driver was already waiting outside, his weathered face breaking into a knowing smile.\n\n\"First time?\" he asked. I nodded, clutching my camera bag.\n\nThe drive through Siem Reap's empty streets felt surreal. No tourists, no vendors, just the occasional stray dog and the distant sound of monks beginning their morning prayers.\n\nFinding the Perfect Spot\n\nWe arrived at the temple complex around 4:30 AM. Even at this hour, crowds were forming near the famous reflecting pools. I wandered further, past the main group, finding a quiet spot near a crumbling stone lion.\n\n\"In Cambodia, we say the sunrise at Angkor is like watching the gods wake up.\"\n\nThe sky began its transformation slowly at first—deep purple giving way to hints of orange and pink. Then, as if someone had turned on a cosmic light switch, the sun crested the temple's iconic towers.\n\nThe Magic Moment\n\nWhat struck me most wasn't just the visual spectacle—though it was undeniably stunning. It was the collective gasp from hundreds of people, the simultaneous clicking of cameras, the profound silence that followed.\n\nFor those fifteen minutes, watching the ancient stones turn from grey to gold, I understood why millions make this pilgrimage every year. It's not just about photogra"
+    },
+    "after": {
+     "url": "/post/sunrise-over-angkor-wat",
+     "text": "Comment posted!\nThanks for joining the conversation.\nWandering Words\nHome\nTravel Stories\nRecipes\nSelf Improvement\nArchive\nSearch\nBack to home\n✈️ Travel Stories\nPart of: Southeast Asia Adventure\nSunrise Over Angkor Wat: A Journey Through Time\nMaya Chen\nMarch 15, 2024\n8 min read\n\nThere's something magical about standing in complete darkness, surrounded by strangers from every corner of the world, all waiting for the same moment. The air was thick with anticipation and the sweet scent of lotus flowers from the nearby pond.\n\nThe Early Morning Rush\n\nGetting to Angkor Wat before sunrise requires dedication. My alarm went off at 3:45 AM, and despite every fiber of my being wanting to stay in the comfortable hotel bed, I forced myself up. The tuk-tuk driver was already waiting outside, his weathered face breaking into a knowing smile.\n\n\"First time?\" he asked. I nodded, clutching my camera bag.\n\nThe drive through Siem Reap's empty streets felt surreal. No tourists, no vendors, just the occasional stray dog and the distant sound of monks beginning their morning prayers.\n\nFinding the Perfect Spot\n\nWe arrived at the temple complex around 4:30 AM. Even at this hour, crowds were forming near the famous reflecting pools. I wandered further, past the main group, finding a quiet spot near a crumbling stone lion.\n\n\"In Cambodia, we say the sunrise at Angkor is like watching the gods wake up.\"\n\nThe sky began its transformation slowly at first—deep purple giving way to hints of orange and pink. Then, as if someone had turned on a cosmic light switch, the sun crested the temple's iconic towers.\n\nThe Magic Moment\n\nWhat struck me most wasn't just the visual spectacle—though it was undeniably stunning. It was the collective gasp from hundreds of people, the simultaneous clicking of cameras, the profound silence that followed.\n\nFor those fifteen minutes, watching the ancient stones turn from grey to gold, I understood why millions make this pilgrimage every year. It's not just about photography or checking off a bucket list item. It's about connecting with something ancient and eternal.\n\nTips for Your Visit\nBook tickets the day before at the official ticket center\nBring a flashlight—it's genuinely dark before sunrise\nDress respectfully (shoulders and knees covered)\nStay after the crowds leave; the temples are peaceful around 7 AM\n\nThe temples of Angkor have stood for nearly a thousand years, witnessing countless sunrises. Being there, even for just one, felt like being part of something much larger than myself.\n\n#Cambodia\n#Temples\n#Photography\n#Southeast Asia\n234\nShare\nComments (3)\nLeave a comment\nPost Comment\nTravelLover88\nMar 16, 2024\n\nThis brought back so many memories! I visited Angkor Wat last year and the sunrise was magical. Your tip about staying after the crowds leave is spot on.\n\nPhotoJunkie\nMar 17, 2024\n\nWhat camera settings did you use for the sunrise shots? Trying to plan my own trip!\n\nJames Mitchell\nSep 20, 2026\n\nAbsolutely loved this post! The sunrise photo"
+    },
+    "console_errors": [],
+    "failed_requests": [],
+    "http_errors": [],
+    "js_exceptions": [],
+    "values": {
+     "Your name": "James Mitchell",
+     "Share your thoughts...": "Absolutely loved this post! The sunrise photography is breathtaking, and the cultural details about Angkor Wat really deepened my understanding of the site."
+    },
+    "rule": "duplicate: an identical record was just created, a second identical submit must be rejected",
+    "expectation": "Submitting a comment with valid text on an article adds it to that article's comment list immediately, visible on reload",
+    "form_blocked": false,
+    "diff": {
+     "url_changed": false,
+     "added_lines": [
+      "[field Your name='Absolutely loved this post! The sunrise photography is breathtaking, and the cultural details about Angkor Wat really deepened my understanding of the site.'] [field Share your thoughts...='']"
+     ],
+     "removed_lines": [
+      "Notification Comment posted!Thanks for joining the conversation.",
+      "[field Your name=''] [field Share your thoughts...='']"
+     ],
+     "counters_changed": {},
+     "changed": true
+    }
+   },
+   "id": 0,
+   "page": "/post/sunrise-over-angkor-wat",
+   "reproduced": null,
+   "count": 1
+  },
+  {
+   "step": 41,
+   "state": "6a1756c737",
+   "how": "jev(0.73)",
+   "action": "form \"Post Comment\"",
+   "from": "/post/street-food-bangkok",
+   "to": "/post/street-food-bangkok",
+   "oracles": {
+    "error_shown": 0.04,
+    "action_ignored": 0.45,
+    "inconsistent_state": 0.58,
+    "broken_content": 0.38,
+    "dead_end": 0.1,
+    "invalid_accepted": 0.82,
+    "expectation_violated": 0.16,
+    "expectation_verified": 0.81
+   },
+   "flags": [
+    "invalid_accepted"
+   ],
+   "values": {
+    "Your name": "Sarah Chen",
+    "Share your thoughts...": "Loved this guide! The pad thai recipe was perfect and the street vendor tips were so helpful. Can't wait to try the mango sticky rice next time I visit Bangkok!"
+   },
+   "rule": "duplicate: an identical record was just created, a second identical submit must be rejected",
+   "expectation": "Submitting a comment with valid text on an article adds it to that article's comment list immediately, visible on reload",
+   "form_blocked": false,
+   "diff": {
+    "url_changed": false,
+    "added_lines": [
+     "[field Your name='Loved this guide! The pad thai recipe was perfect and the street vendor tips were so helpful. Can't wait to try the mango sticky rice next time I visit Bangkok!'] [field Share your thoughts...='']"
+    ],
+    "removed_lines": [
+     "Notification Comment posted!Thanks for joining the conversation.",
+     "[field Your name=''] [field Share your thoughts...='']"
+    ],
+    "counters_changed": {},
+    "changed": true
+   },
+   "evidence": {
+    "action": "form \"Post Comment\" (fill all 2 fields and submit) [invalid]",
+    "before": {
+     "url": "/post/street-food-bangkok",
+     "text": "Comment posted!\nThanks for joining the conversation.\nWandering Words\nHome\nTravel Stories\nRecipes\nSelf Improvement\nArchive\nSearch\nBack to home\n✈️ Travel Stories\nPart of: Southeast Asia Adventure\nStreet Food Adventures in Bangkok\nMaya Chen\nFebruary 28, 2024\n9 min read\n\nBangkok's street food isn't just about eating—it's about surrendering to chaos and trusting that the tiny plastic stool, the wok flames licking the night air, and the grandmother who's been cooking since before you were born will deliver something extraordinary.\n\nFinding the Best Stalls\n\nThe tourist areas around Khao San Road have their charm, but the real magic happens in the neighborhoods where locals eat. Here are my favorite spots:\n\nYaowarat (Chinatown)\nCharcoal-grilled seafood at T&K Seafood\nRolled noodles with pork at Nai Ek\nThe legendary crab omelets at Lek & Rut\nVictory Monument\n\nOffice workers flood this area for lunch, which means fast turnover and incredibly fresh food. The boat noodle alley is essential—each bowl costs about 15 baht (less than 50 cents), but you'll need several to feel satisfied.\n\nThe Rules of Street Food\n\nAfter weeks of eating from carts and stalls, I developed some guidelines:\n\n**Follow the crowds:** If locals are lining up, join them\n**Check the turnover:** Busy stalls = fresh ingredients\n**Watch for cleanliness:** Not sterile, but organized\n**Start slow:** Let your stomach adjust before diving deep\n\"In Bangkok, the best restaurants have no walls.\"\nMy Top 5 Dishes\n\nAfter dozens of meals and one minor food-related incident (let's not discuss the mystery skewer), here are my absolute favorites:\n\n1. Pad Krapao Moo Kai Dao Holy basil pork with a crispy fried egg—the unofficial national dish. Order it \"pet mak\" (very spicy) for the authentic experience.\n2. Som Tam Green papaya salad that hits every note: sour, sweet, spicy, salty. The mortar and pestle version is always best.\n3. Khao Man Gai Deceptively simple chicken and rice that showcases the Thai genius for extracting maxi"
+    },
+    "after": {
+     "url": "/post/street-food-bangkok",
+     "text": "Comment posted!\nThanks for joining the conversation.\nWandering Words\nHome\nTravel Stories\nRecipes\nSelf Improvement\nArchive\nSearch\nBack to home\n✈️ Travel Stories\nPart of: Southeast Asia Adventure\nStreet Food Adventures in Bangkok\nMaya Chen\nFebruary 28, 2024\n9 min read\n\nBangkok's street food isn't just about eating—it's about surrendering to chaos and trusting that the tiny plastic stool, the wok flames licking the night air, and the grandmother who's been cooking since before you were born will deliver something extraordinary.\n\nFinding the Best Stalls\n\nThe tourist areas around Khao San Road have their charm, but the real magic happens in the neighborhoods where locals eat. Here are my favorite spots:\n\nYaowarat (Chinatown)\nCharcoal-grilled seafood at T&K Seafood\nRolled noodles with pork at Nai Ek\nThe legendary crab omelets at Lek & Rut\nVictory Monument\n\nOffice workers flood this area for lunch, which means fast turnover and incredibly fresh food. The boat noodle alley is essential—each bowl costs about 15 baht (less than 50 cents), but you'll need several to feel satisfied.\n\nThe Rules of Street Food\n\nAfter weeks of eating from carts and stalls, I developed some guidelines:\n\n**Follow the crowds:** If locals are lining up, join them\n**Check the turnover:** Busy stalls = fresh ingredients\n**Watch for cleanliness:** Not sterile, but organized\n**Start slow:** Let your stomach adjust before diving deep\n\"In Bangkok, the best restaurants have no walls.\"\nMy Top 5 Dishes\n\nAfter dozens of meals and one minor food-related incident (let's not discuss the mystery skewer), here are my absolute favorites:\n\n1. Pad Krapao Moo Kai Dao Holy basil pork with a crispy fried egg—the unofficial national dish. Order it \"pet mak\" (very spicy) for the authentic experience.\n2. Som Tam Green papaya salad that hits every note: sour, sweet, spicy, salty. The mortar and pestle version is always best.\n3. Khao Man Gai Deceptively simple chicken and rice that showcases the Thai genius for extracting maximum flavor from minimum ingredients.\n4. Mango Sticky Rice When mangoes are in season (March-May), this dessert becomes transcendent.\n5. Boat Noodles Rich, porky, slightly intense—these small bowls pack an enormous flavor punch.\nPractical Tips\nCarry small bills (20 and 50 baht notes)\nLearn basic Thai numbers for ordering\nEmbrace the heat—both temperature and spice\nBring tissues (napkins are rare)\n\nBangkok taught me that the best meals aren't always the fanciest. Sometimes they're served on a plastic plate, under fluorescent lights, surrounded by the beautiful chaos of a city that never stops eating.\n\n#Thailand\n#Street Food\n#Bangkok\n#Southeast Asia\n312\nShare\nComments (1)\nLeave a comment\nPost Comment\nSarah Chen\nSep 20, 2026\n\nLoved this guide! The pad thai recipe was perfect and the street vendor tips were so helpful. Can't wait to try the mango sticky rice next time I visit Bangkok!\n\nYou might also enjoy\nMore in this category\n✈️ Travel Stories\nSunrise Over Angkor Wat: A Journey Through Ti"
+    },
+    "console_errors": [],
+    "failed_requests": [],
+    "http_errors": [],
+    "js_exceptions": [],
+    "values": {
+     "Your name": "Sarah Chen",
+     "Share your thoughts...": "Loved this guide! The pad thai recipe was perfect and the street vendor tips were so helpful. Can't wait to try the mango sticky rice next time I visit Bangkok!"
+    },
+    "rule": "duplicate: an identical record was just created, a second identical submit must be rejected",
+    "expectation": "Submitting a comment with valid text on an article adds it to that article's comment list immediately, visible on reload",
+    "form_blocked": false,
+    "diff": {
+     "url_changed": false,
+     "added_lines": [
+      "[field Your name='Loved this guide! The pad thai recipe was perfect and the street vendor tips were so helpful. Can't wait to try the mango sticky rice next time I visit Bangkok!'] [field Share your thoughts...='']"
+     ],
+     "removed_lines": [
+      "Notification Comment posted!Thanks for joining the conversation.",
+      "[field Your name=''] [field Share your thoughts...='']"
+     ],
+     "counters_changed": {},
+     "changed": true
+    }
+   },
+   "id": 1,
+   "page": "/post/street-food-bangkok",
+   "reproduced": null,
+   "count": 1
+  },
+  {
+   "step": 50,
+   "state": "df7e2ae786",
+   "how": "absence",
+   "action": "searched every screen for a 'Delete' control",
+   "from": "/search",
+   "to": "/search",
+   "oracles": {},
+   "flags": [
+    "expectation_unreachable"
+   ],
+   "value": null,
+   "expectation": "The post is gone from home, archive, category, tag, series, and search results — no orphaned reference remains",
+   "deterministic": true,
+   "missing_controls": [
+    "Delete"
+   ],
+   "evidence": {
+    "action": "searched every screen for a 'Delete' control",
+    "before": {
+     "url": "/search",
+     "text": "Wandering Words\nHome\nTravel Stories\nRecipes\nSelf Improvement\nArchive\nSearch\nBack to home\nSearch Articles\nFilter by tag:\nAdventure\nBangkok\nCambodia\nCoffee\nComfort Food\nDessert\nDigital Wellness\nFocus\nFrom Scratch\nHabits\nItalian\nJournaling\nKayaking\nLifestyle\nMindfulness\nMinimalism\nMorning Routine\nNo-Bake\nPasta\nPhotography\nProductivity\nSelf-Reflection\nSoutheast Asia\nStreet Food\nTemples\nThailand\nVietnam\nWriting\n\n8 articles found\n\n✈️ Travel Stories\nSunrise Over Angkor Wat: A Journey Through Time\n\nWaking up at 4 AM seemed impossible until I witnessed the most breathtaking sunrise of my life over the ancient temples of Cambodia.\n\nMar 15\n8 min\n234\n🍳 Recipes\nThe Perfect Homemade Pasta: A Labor of Love\n\nAfter years of trial and error, I finally cracked the code to restaurant-quality fresh pasta at home. Here's everything I learned.\n\nMar 10\n12 min\n456\n🌱 Self Improvement\nThe 5 AM Club: My 30-Day Experiment\n\nI committed to waking up at 5 AM for a month. Here's what happened to my productivity, creativity, and sanity.\n\nMar 5\n10 min\n189\n✈️ Travel Stories\nStreet Food Adventures in Bangkok\n\nFrom midnight pad thai to mysterious skewers, my guide to navigating Bangkok's legendary street food scene.\n\nFeb 28\n9 min\n312\n🍳 Recipes\nClassic Tiramisu: No-Bake Italian Perfection\n\nThis authentic tiramisu recipe uses traditional mascarpone and espresso for a dessert that rivals any Italian trattoria.\n\nFeb 20\n15 min\n287\n🌱 Self Improvement\nDigital Minimalism: Reclaiming My Attention\n\nHow I reduced my screen time by 70% and rediscovered the joy of boredom.\n\nFeb 15\n11 min\n423\n✈️ Travel Stories\nHa Long Bay by Kayak: Beyond the Tourist Trail\n\nEscaping the cruise ship crowds to discover hidden lagoons and floating villages in Vietnam's iconic bay.\n\nFeb 10\n10 min\n198\n🌱 Self Improvement\nThe Art of Journaling: Writing Your Way to Clarity\n\nHow a simple notebook became my therapist, planner, and creative playground.\n\nJan 25\n9 min\n345\nWandering Words\n\nA personal blog sharing travel stories from around the wor"
+    },
+    "after": {
+     "url": "/search",
+     "text": "Wandering Words\nHome\nTravel Stories\nRecipes\nSelf Improvement\nArchive\nSearch\nBack to home\nSearch Articles\nFilter by tag:\nAdventure\nBangkok\nCambodia\nCoffee\nComfort Food\nDessert\nDigital Wellness\nFocus\nFrom Scratch\nHabits\nItalian\nJournaling\nKayaking\nLifestyle\nMindfulness\nMinimalism\nMorning Routine\nNo-Bake\nPasta\nPhotography\nProductivity\nSelf-Reflection\nSoutheast Asia\nStreet Food\nTemples\nThailand\nVietnam\nWriting\n\n8 articles found\n\n✈️ Travel Stories\nSunrise Over Angkor Wat: A Journey Through Time\n\nWaking up at 4 AM seemed impossible until I witnessed the most breathtaking sunrise of my life over the ancient temples of Cambodia.\n\nMar 15\n8 min\n234\n🍳 Recipes\nThe Perfect Homemade Pasta: A Labor of Love\n\nAfter years of trial and error, I finally cracked the code to restaurant-quality fresh pasta at home. Here's everything I learned.\n\nMar 10\n12 min\n456\n🌱 Self Improvement\nThe 5 AM Club: My 30-Day Experiment\n\nI committed to waking up at 5 AM for a month. Here's what happened to my productivity, creativity, and sanity.\n\nMar 5\n10 min\n189\n✈️ Travel Stories\nStreet Food Adventures in Bangkok\n\nFrom midnight pad thai to mysterious skewers, my guide to navigating Bangkok's legendary street food scene.\n\nFeb 28\n9 min\n312\n🍳 Recipes\nClassic Tiramisu: No-Bake Italian Perfection\n\nThis authentic tiramisu recipe uses traditional mascarpone and espresso for a dessert that rivals any Italian trattoria.\n\nFeb 20\n15 min\n287\n🌱 Self Improvement\nDigital Minimalism: Reclaiming My Attention\n\nHow I reduced my screen time by 70% and rediscovered the joy of boredom.\n\nFeb 15\n11 min\n423\n✈️ Travel Stories\nHa Long Bay by Kayak: Beyond the Tourist Trail\n\nEscaping the cruise ship crowds to discover hidden lagoons and floating villages in Vietnam's iconic bay.\n\nFeb 10\n10 min\n198\n🌱 Self Improvement\nThe Art of Journaling: Writing Your Way to Clarity\n\nHow a simple notebook became my therapist, planner, and creative playground.\n\nJan 25\n9 min\n345\nWandering Words\n\nA personal blog sharing travel stories from around the world, detailed recipes from my kitchen, and self-improvement guides for a better life.\n\nCategories\n✈️ Travel Stories\n🍳 Recipes\n🌱 Self Improvement\nQuick Links\nArchive\nSearch\nSeries\n\n© 2026 Wandering Words. All rights reserved.\n\nMade with ❤️ for storytellers everywhere\n[field Search by title, content, or keywords...='']"
+    },
+    "console_errors": [],
+    "failed_requests": [],
+    "http_errors": [],
+    "js_exceptions": [],
+    "value": null,
+    "expectation": "The post is gone from home, archive, category, tag, series, and search results — no orphaned reference remains",
+    "deterministic": true,
+    "missing_controls": [
+     "Delete"
+    ]
+   },
+   "id": 2,
+   "page": "/search",
+   "reproduced": null,
+   "count": 1
+  },
+  {
+   "step": 51,
+   "state": "df7e2ae786",
+   "how": "absence",
+   "action": "searched every screen for a 'Edit' control",
+   "from": "/search",
+   "to": "/search",
+   "oracles": {},
+   "flags": [
+    "expectation_unreachable"
+   ],
+   "value": null,
+   "expectation": "Editing the post title updates it in place everywhere it's shown (home, archive, series page) with no duplicate entry",
+   "deterministic": true,
+   "missing_controls": [
+    "Edit"
+   ],
+   "evidence": {
+    "action": "searched every screen for a 'Edit' control",
+    "before": {
+     "url": "/search",
+     "text": "Wandering Words\nHome\nTravel Stories\nRecipes\nSelf Improvement\nArchive\nSearch\nBack to home\nSearch Articles\nFilter by tag:\nAdventure\nBangkok\nCambodia\nCoffee\nComfort Food\nDessert\nDigital Wellness\nFocus\nFrom Scratch\nHabits\nItalian\nJournaling\nKayaking\nLifestyle\nMindfulness\nMinimalism\nMorning Routine\nNo-Bake\nPasta\nPhotography\nProductivity\nSelf-Reflection\nSoutheast Asia\nStreet Food\nTemples\nThailand\nVietnam\nWriting\n\n8 articles found\n\n✈️ Travel Stories\nSunrise Over Angkor Wat: A Journey Through Time\n\nWaking up at 4 AM seemed impossible until I witnessed the most breathtaking sunrise of my life over the ancient temples of Cambodia.\n\nMar 15\n8 min\n234\n🍳 Recipes\nThe Perfect Homemade Pasta: A Labor of Love\n\nAfter years of trial and error, I finally cracked the code to restaurant-quality fresh pasta at home. Here's everything I learned.\n\nMar 10\n12 min\n456\n🌱 Self Improvement\nThe 5 AM Club: My 30-Day Experiment\n\nI committed to waking up at 5 AM for a month. Here's what happened to my productivity, creativity, and sanity.\n\nMar 5\n10 min\n189\n✈️ Travel Stories\nStreet Food Adventures in Bangkok\n\nFrom midnight pad thai to mysterious skewers, my guide to navigating Bangkok's legendary street food scene.\n\nFeb 28\n9 min\n312\n🍳 Recipes\nClassic Tiramisu: No-Bake Italian Perfection\n\nThis authentic tiramisu recipe uses traditional mascarpone and espresso for a dessert that rivals any Italian trattoria.\n\nFeb 20\n15 min\n287\n🌱 Self Improvement\nDigital Minimalism: Reclaiming My Attention\n\nHow I reduced my screen time by 70% and rediscovered the joy of boredom.\n\nFeb 15\n11 min\n423\n✈️ Travel Stories\nHa Long Bay by Kayak: Beyond the Tourist Trail\n\nEscaping the cruise ship crowds to discover hidden lagoons and floating villages in Vietnam's iconic bay.\n\nFeb 10\n10 min\n198\n🌱 Self Improvement\nThe Art of Journaling: Writing Your Way to Clarity\n\nHow a simple notebook became my therapist, planner, and creative playground.\n\nJan 25\n9 min\n345\nWandering Words\n\nA personal blog sharing travel stories from around the wor"
+    },
+    "after": {
+     "url": "/search",
+     "text": "Wandering Words\nHome\nTravel Stories\nRecipes\nSelf Improvement\nArchive\nSearch\nBack to home\nSearch Articles\nFilter by tag:\nAdventure\nBangkok\nCambodia\nCoffee\nComfort Food\nDessert\nDigital Wellness\nFocus\nFrom Scratch\nHabits\nItalian\nJournaling\nKayaking\nLifestyle\nMindfulness\nMinimalism\nMorning Routine\nNo-Bake\nPasta\nPhotography\nProductivity\nSelf-Reflection\nSoutheast Asia\nStreet Food\nTemples\nThailand\nVietnam\nWriting\n\n8 articles found\n\n✈️ Travel Stories\nSunrise Over Angkor Wat: A Journey Through Time\n\nWaking up at 4 AM seemed impossible until I witnessed the most breathtaking sunrise of my life over the ancient temples of Cambodia.\n\nMar 15\n8 min\n234\n🍳 Recipes\nThe Perfect Homemade Pasta: A Labor of Love\n\nAfter years of trial and error, I finally cracked the code to restaurant-quality fresh pasta at home. Here's everything I learned.\n\nMar 10\n12 min\n456\n🌱 Self Improvement\nThe 5 AM Club: My 30-Day Experiment\n\nI committed to waking up at 5 AM for a month. Here's what happened to my productivity, creativity, and sanity.\n\nMar 5\n10 min\n189\n✈️ Travel Stories\nStreet Food Adventures in Bangkok\n\nFrom midnight pad thai to mysterious skewers, my guide to navigating Bangkok's legendary street food scene.\n\nFeb 28\n9 min\n312\n🍳 Recipes\nClassic Tiramisu: No-Bake Italian Perfection\n\nThis authentic tiramisu recipe uses traditional mascarpone and espresso for a dessert that rivals any Italian trattoria.\n\nFeb 20\n15 min\n287\n🌱 Self Improvement\nDigital Minimalism: Reclaiming My Attention\n\nHow I reduced my screen time by 70% and rediscovered the joy of boredom.\n\nFeb 15\n11 min\n423\n✈️ Travel Stories\nHa Long Bay by Kayak: Beyond the Tourist Trail\n\nEscaping the cruise ship crowds to discover hidden lagoons and floating villages in Vietnam's iconic bay.\n\nFeb 10\n10 min\n198\n🌱 Self Improvement\nThe Art of Journaling: Writing Your Way to Clarity\n\nHow a simple notebook became my therapist, planner, and creative playground.\n\nJan 25\n9 min\n345\nWandering Words\n\nA personal blog sharing travel stories from around the world, detailed recipes from my kitchen, and self-improvement guides for a better life.\n\nCategories\n✈️ Travel Stories\n🍳 Recipes\n🌱 Self Improvement\nQuick Links\nArchive\nSearch\nSeries\n\n© 2026 Wandering Words. All rights reserved.\n\nMade with ❤️ for storytellers everywhere\n[field Search by title, content, or keywords...='']"
+    },
+    "console_errors": [],
+    "failed_requests": [],
+    "http_errors": [],
+    "js_exceptions": [],
+    "value": null,
+    "expectation": "Editing the post title updates it in place everywhere it's shown (home, archive, series page) with no duplicate entry",
+    "deterministic": true,
+    "missing_controls": [
+     "Edit"
+    ]
+   },
+   "id": 3,
+   "page": "/search",
+   "reproduced": null,
+   "count": 1
+  },
+  {
+   "id": 4,
+   "step": -1,
+   "state": "",
+   "how": "absence",
+   "action": "absence probe: locate",
+   "page": "/",
+   "from": "/",
+   "to": "/",
+   "oracles": {
+    "feature_missing": 0.88
+   },
+   "flags": [
+    "feature_missing"
+   ],
+   "reproduced": true,
+   "count": 1,
+   "expectation": "I want a personal blog where I can regularly publish articles about travel stories, detailed recipes, and self-improvement guides",
+   "report": "On / the spec requires \"I want a personal blog where I can regularly publish articles about travel stories, detailed recipes, and self-improvement guides\" but no New Post / Create Article control control or content exists (looked for New Post, Create Post, Add Post, Write Post, New Article among 42 controls and 0 fields).",
+   "evidence": {
+    "action": "locate",
+    "before": {
+     "url": "/",
+     "text": ""
+    },
+    "after": {
+     "url": "/",
+     "text": "Wandering Words\nHome\nTravel Stories\nRecipes\nSelf Improvement\nArchive\nSearch\nStories from the Heart\n\nTravel adventures, kitchen experiments, and lessons learned along the way.\n\n✈️ Travel Stories\nSeries\nSunrise Over Angkor Wat: A Journey Through Time\n\nWaking up at 4 AM seemed impossible until I witnessed the most breathtaking sunrise of my life over the ancient temples of Cambodia.\n\nMar 15, 2024\n8 min read\n234\n🍳 Recipes\nSeries\nThe Perfect Homemade Pasta: A Labor of Love\n\nAfter years of trial and error, I finally cracked the code to restaurant-quality fresh pasta at home. Here's everything I learned.\n\nMar 10, 2024\n12 min read\n456\nExplore Topics\n✈️\nTravel Stories\n\nAdventures from around the world\n\nBrowse articles\n🍳\nRecipes\n\nDelicious dishes from my kitchen\n\nBrowse articles\n🌱\nSelf Improvement\n\nTips for a better life\n\nBrowse articles\nRecent Stories\n🌱 Self Improvement\nThe 5 AM Club: My 30-Day Experiment\n\nI committed to waking up at 5 AM for a month. Here's what happened to my productivity, creativity, and sanity.\n\nMar 5\n10 min\n189\n✈️ Travel Stories\nStreet Food Adventures in Bangkok\n\nFrom midnight pad thai to mysterious skewers, my guide to navigating Bangkok's legendary street food scene.\n\nFeb 28\n9 min\n312\n🍳 Recipes\nClassic Tiramisu: No-Bake Italian Perfection\n\nThis authentic tiramisu recipe uses traditional mascarpone and espresso for a dessert that rivals any Italian trattoria.\n\nFeb 20\n15 min\n287\n🌱 Self Improvement\nDigital Minimalism: Reclaiming My Attention\n\nHow I reduced my screen time by 70% and rediscovered the joy of boredom.\n\nFeb 15\n11 min\n423\n✈️ Travel Stories\nHa Long Bay by Kayak: Beyond the Tourist Trail\n\nEscaping the cruise ship crowds to discover hidden lagoons and floating villages in Vietnam's iconic bay.\n\nFeb 10\n10 min\n198\n🌱 Self Improvement\nThe Art of Journaling: Writing Your Way to Clarity\n\nHow a simple notebook became my therapist, planner, and creative playground.\n\nJan 25\n9 min\n345\nFeatured Series\nView all series\n3 articles\nSoutheast Asia Adventure\n\nA month-long journey through Thailand, Vietnam, and Cambodia\n\n2 articles\nItalian Kitchen Essentials\n\nMaster the fundamentals of Italian cooking\n\n2 articles\nMorning Rituals\n\nBuilding a morning routine that transforms your day\n\nPopular Tags\nSoutheast Asia (3)\nItalian (2)\nLifestyle (2)\nCambodia (1)\nTemples (1)\nPhotography (1)\nPasta (1)\nFrom Scratch (1)\nComfort Food (1)\nProductivity (1)\nMorning Routine (1)\nHabits (1)\nWandering Words\n\nA personal blog sharing travel stories from around the world, detailed recipes from my kitchen, and self-improvement guides for a better life.\n\nCategories\n✈️ Travel Stories\n🍳 Recipes\n🌱 Self Improvement\nQuick Links\nArchive\nSearch\nSeries\n\n© 2026 Wandering Words. All rights reserved.\n\nMade with ❤️ for storytellers everywhere"
+    },
+    "console_errors": [],
+    "failed_requests": [],
+    "http_errors": [],
+    "js_exceptions": [],
+    "controls": [
+     "Wandering Words",
+     "Home",
+     "Travel Stories",
+     "Recipes",
+     "Self Improvement",
+     "Archive",
+     "Search",
+     "Search",
+     "✈️ Travel Stories\nSeries\nSunrise Over Angkor Wat: A Journey Through Time\n\nWaking up at 4 AM seemed impossible until I witnessed the most breathtaking sunrise of my life over the ancient temples of Cambodia.\n\nMar 15, 2024\n8 min read\n234",
+     "🍳 Recipes\nSeries\nThe Perfect Homemade Pasta: A Labor of Love\n\nAfter years of trial and error, I finally cracked the code to restaurant-quality fresh pasta at home. Here's everything I learned.\n\nMar 10, 2024\n12 min read\n456",
+     "✈️\nTravel Stories\n\nAdventures from around the world\n\nBrowse articles",
+     "🍳\nRecipes\n\nDelicious dishes from my kitchen\n\nBrowse articles",
+     "🌱\nSelf Improvement\n\nTips for a better life\n\nBrowse articles",
+     "🌱 Self Improvement\nThe 5 AM Club: My 30-Day Experiment\n\nI committed to waking up at 5 AM for a month. Here's what happened to my productivity, creativity, and sanity.\n\nMar 5\n10 min\n189",
+     "✈️ Travel Stories\nStreet Food Adventures in Bangkok\n\nFrom midnight pad thai to mysterious skewers, my guide to navigating Bangkok's legendary street food scene.\n\nFeb 28\n9 min\n312",
+     "🍳 Recipes\nClassic Tiramisu: No-Bake Italian Perfection\n\nThis authentic tiramisu recipe uses traditional mascarpone and espresso for a dessert that rivals any Italian trattoria.\n\nFeb 20\n15 min\n287",
+     "🌱 Self Improvement\nDigital Minimalism: Reclaiming My Attention\n\nHow I reduced my screen time by 70% and rediscovered the joy of boredom.\n\nFeb 15\n11 min\n423",
+     "✈️ Travel Stories\nHa Long Bay by Kayak: Beyond the Tourist Trail\n\nEscaping the cruise ship crowds to discover hidden lagoons and floating villages in Vietnam's iconic bay.\n\nFeb 10\n10 min\n198",
+     "🌱 Self Improvement\nThe Art of Journaling: Writing Your Way to Clarity\n\nHow a simple notebook became my therapist, planner, and creative playground.\n\nJan 25\n9 min\n345",
+     "View all series",
+     "3 articles\nSoutheast Asia Adventure\n\nA month-long journey through Thailand, Vietnam, and Cambodia",
+     "2 articles\nItalian Kitchen Essentials\n\nMaster the fundamentals of Italian cooking",
+     "2 articles\nMorning Rituals\n\nBuilding a morning routine that transforms your day",
+     "Southeast Asia (3)",
+     "Italian (2)",
+     "Lifestyle (2)",
+     "Cambodia (1)",
+     "Temples (1)",
+     "Photography (1)",
+     "Pasta (1)",
+     "From Scratch (1)",
+     "Comfort Food (1)",
+     "Productivity (1)",
+     "Morning Routine (1)",
+     "Habits (1)",
+     "Wandering Words",
+     "✈️ Travel Stories",
+     "🍳 Recipes",
+     "🌱 Self Improvement",
+     "Archive",
+     "Search",
+     "Series"
+    ],
+    "fields": [],
+    "missing_terms": [
+     "New Post",
+     "Create Post",
+     "Add Post",
+     "Write Post",
+     "New Article"
+    ]
+   }
+  },
+  {
+   "id": 5,
+   "step": -1,
+   "state": "",
+   "how": "absence",
+   "action": "absence probe: locate",
+   "page": "/post/sunrise-over-angkor-wat",
+   "from": "/post/sunrise-over-angkor-wat",
+   "to": "/post/sunrise-over-angkor-wat",
+   "oracles": {
+    "feature_missing": 0.94
+   },
+   "flags": [
+    "feature_missing"
+   ],
+   "reproduced": true,
+   "count": 1,
+   "expectation": "The admin/editor mode has visible controls for creating, editing, and deleting posts, categories, tags, and series (not just viewing)",
+   "report": "On /post/sunrise-over-angkor-wat the spec requires \"The admin/editor mode has visible controls for creating, editing, and deleting posts, categories, tags, and series (not just viewing)\" but no Edit/Delete controls on the article page control or content exists (looked for Edit, Delete, Remove Post among 28 controls and 2 fields).",
+   "evidence": {
+    "action": "locate",
+    "before": {
+     "url": "/post/sunrise-over-angkor-wat",
+     "text": ""
+    },
+    "after": {
+     "url": "/post/sunrise-over-angkor-wat",
+     "text": "Wandering Words\nHome\nTravel Stories\nRecipes\nSelf Improvement\nArchive\nSearch\nBack to home\n✈️ Travel Stories\nPart of: Southeast Asia Adventure\nSunrise Over Angkor Wat: A Journey Through Time\nMaya Chen\nMarch 15, 2024\n8 min read\n\nThere's something magical about standing in complete darkness, surrounded by strangers from every corner of the world, all waiting for the same moment. The air was thick with anticipation and the sweet scent of lotus flowers from the nearby pond.\n\nThe Early Morning Rush\n\nGetting to Angkor Wat before sunrise requires dedication. My alarm went off at 3:45 AM, and despite every fiber of my being wanting to stay in the comfortable hotel bed, I forced myself up. The tuk-tuk driver was already waiting outside, his weathered face breaking into a knowing smile.\n\n\"First time?\" he asked. I nodded, clutching my camera bag.\n\nThe drive through Siem Reap's empty streets felt surreal. No tourists, no vendors, just the occasional stray dog and the distant sound of monks beginning their morning prayers.\n\nFinding the Perfect Spot\n\nWe arrived at the temple complex around 4:30 AM. Even at this hour, crowds were forming near the famous reflecting pools. I wandered further, past the main group, finding a quiet spot near a crumbling stone lion.\n\n\"In Cambodia, we say the sunrise at Angkor is like watching the gods wake up.\"\n\nThe sky began its transformation slowly at first—deep purple giving way to hints of orange and pink. Then, as if someone had turned on a cosmic light switch, the sun crested the temple's iconic towers.\n\nThe Magic Moment\n\nWhat struck me most wasn't just the visual spectacle—though it was undeniably stunning. It was the collective gasp from hundreds of people, the simultaneous clicking of cameras, the profound silence that followed.\n\nFor those fifteen minutes, watching the ancient stones turn from grey to gold, I understood why millions make this pilgrimage every year. It's not just about photography or checking off a bucket list item. It's about connecting with something ancient and eternal.\n\nTips for Your Visit\nBook tickets the day before at the official ticket center\nBring a flashlight—it's genuinely dark before sunrise\nDress respectfully (shoulders and knees covered)\nStay after the crowds leave; the temples are peaceful around 7 AM\n\nThe temples of Angkor have stood for nearly a thousand years, witnessing countless sunrises. Being there, even for just one, felt like being part of something much larger than myself.\n\n#Cambodia\n#Temples\n#Photography\n#Southeast Asia\n234\nShare\nComments (2)\nLeave a comment\nPost Comment\nTravelLover88\nMar 16, 2024\n\nThis brought back so many memories! I visited Angkor Wat last year and the sunrise was magical. Your tip about staying after the crowds leave is spot on.\n\nPhotoJunkie\nMar 17, 2024\n\nWhat camera settings did you use for the sunrise shots? Trying to plan my own trip!\n\nYou might also enjoy\nMore in this category\n✈️ Travel Stories\nStreet Food Adventures in Bangkok\n\nFrom midnight pad thai to myste"
+    },
+    "console_errors": [],
+    "failed_requests": [],
+    "http_errors": [],
+    "js_exceptions": [],
+    "controls": [
+     "Wandering Words",
+     "Home",
+     "Travel Stories",
+     "Recipes",
+     "Self Improvement",
+     "Archive",
+     "Search",
+     "Search",
+     "Back to home",
+     "✈️ Travel Stories",
+     "Part of: Southeast Asia Adventure",
+     "#Cambodia",
+     "#Temples",
+     "#Photography",
+     "#Southeast Asia",
+     "234",
+     "Share",
+     "Post Comment",
+     "More in this category",
+     "✈️ Travel Stories\nStreet Food Adventures in Bangkok\n\nFrom midnight pad thai to mysterious skewers, my guide to navigating Bangkok's legendary street food scene.\n\nFeb 28\n9 min\n312",
+     "✈️ Travel Stories\nHa Long Bay by Kayak: Beyond the Tourist Trail\n\nEscaping the cruise ship crowds to discover hidden lagoons and floating villages in Vietnam's iconic bay.\n\nFeb 10\n10 min\n198",
+     "Wandering Words",
+     "✈️ Travel Stories",
+     "🍳 Recipes",
+     "🌱 Self Improvement",
+     "Archive",
+     "Search",
+     "Series"
+    ],
+    "fields": [
+     "Your name",
+     "Share your thoughts..."
+    ],
+    "missing_terms": [
+     "Edit",
+     "Delete",
+     "Remove Post"
+    ]
+   }
+  },
+  {
+   "id": 6,
+   "step": -1,
+   "state": "",
+   "how": "absence",
+   "action": "absence probe: locate",
+   "page": "/post/sunrise-over-angkor-wat",
+   "from": "/post/sunrise-over-angkor-wat",
+   "to": "/post/sunrise-over-angkor-wat",
+   "oracles": {
+    "feature_missing": 0.8
+   },
+   "flags": [
+    "feature_missing"
+   ],
+   "reproduced": true,
+   "count": 1,
+   "expectation": "simple reactions like “likes,”",
+   "report": "On /post/sunrise-over-angkor-wat the spec requires \"simple reactions like “likes,”\" but no Like button control or content exists (looked for Like, 👍, React among 28 controls and 2 fields).",
+   "evidence": {
+    "action": "locate",
+    "before": {
+     "url": "/post/sunrise-over-angkor-wat",
+     "text": ""
+    },
+    "after": {
+     "url": "/post/sunrise-over-angkor-wat",
+     "text": "Wandering Words\nHome\nTravel Stories\nRecipes\nSelf Improvement\nArchive\nSearch\nBack to home\n✈️ Travel Stories\nPart of: Southeast Asia Adventure\nSunrise Over Angkor Wat: A Journey Through Time\nMaya Chen\nMarch 15, 2024\n8 min read\n\nThere's something magical about standing in complete darkness, surrounded by strangers from every corner of the world, all waiting for the same moment. The air was thick with anticipation and the sweet scent of lotus flowers from the nearby pond.\n\nThe Early Morning Rush\n\nGetting to Angkor Wat before sunrise requires dedication. My alarm went off at 3:45 AM, and despite every fiber of my being wanting to stay in the comfortable hotel bed, I forced myself up. The tuk-tuk driver was already waiting outside, his weathered face breaking into a knowing smile.\n\n\"First time?\" he asked. I nodded, clutching my camera bag.\n\nThe drive through Siem Reap's empty streets felt surreal. No tourists, no vendors, just the occasional stray dog and the distant sound of monks beginning their morning prayers.\n\nFinding the Perfect Spot\n\nWe arrived at the temple complex around 4:30 AM. Even at this hour, crowds were forming near the famous reflecting pools. I wandered further, past the main group, finding a quiet spot near a crumbling stone lion.\n\n\"In Cambodia, we say the sunrise at Angkor is like watching the gods wake up.\"\n\nThe sky began its transformation slowly at first—deep purple giving way to hints of orange and pink. Then, as if someone had turned on a cosmic light switch, the sun crested the temple's iconic towers.\n\nThe Magic Moment\n\nWhat struck me most wasn't just the visual spectacle—though it was undeniably stunning. It was the collective gasp from hundreds of people, the simultaneous clicking of cameras, the profound silence that followed.\n\nFor those fifteen minutes, watching the ancient stones turn from grey to gold, I understood why millions make this pilgrimage every year. It's not just about photography or checking off a bucket list item. It's about connecting with something ancient and eternal.\n\nTips for Your Visit\nBook tickets the day before at the official ticket center\nBring a flashlight—it's genuinely dark before sunrise\nDress respectfully (shoulders and knees covered)\nStay after the crowds leave; the temples are peaceful around 7 AM\n\nThe temples of Angkor have stood for nearly a thousand years, witnessing countless sunrises. Being there, even for just one, felt like being part of something much larger than myself.\n\n#Cambodia\n#Temples\n#Photography\n#Southeast Asia\n234\nShare\nComments (2)\nLeave a comment\nPost Comment\nTravelLover88\nMar 16, 2024\n\nThis brought back so many memories! I visited Angkor Wat last year and the sunrise was magical. Your tip about staying after the crowds leave is spot on.\n\nPhotoJunkie\nMar 17, 2024\n\nWhat camera settings did you use for the sunrise shots? Trying to plan my own trip!\n\nYou might also enjoy\nMore in this category\n✈️ Travel Stories\nStreet Food Adventures in Bangkok\n\nFrom midnight pad thai to myste"
+    },
+    "console_errors": [],
+    "failed_requests": [],
+    "http_errors": [],
+    "js_exceptions": [],
+    "controls": [
+     "Wandering Words",
+     "Home",
+     "Travel Stories",
+     "Recipes",
+     "Self Improvement",
+     "Archive",
+     "Search",
+     "Search",
+     "Back to home",
+     "✈️ Travel Stories",
+     "Part of: Southeast Asia Adventure",
+     "#Cambodia",
+     "#Temples",
+     "#Photography",
+     "#Southeast Asia",
+     "234",
+     "Share",
+     "Post Comment",
+     "More in this category",
+     "✈️ Travel Stories\nStreet Food Adventures in Bangkok\n\nFrom midnight pad thai to mysterious skewers, my guide to navigating Bangkok's legendary street food scene.\n\nFeb 28\n9 min\n312",
+     "✈️ Travel Stories\nHa Long Bay by Kayak: Beyond the Tourist Trail\n\nEscaping the cruise ship crowds to discover hidden lagoons and floating villages in Vietnam's iconic bay.\n\nFeb 10\n10 min\n198",
+     "Wandering Words",
+     "✈️ Travel Stories",
+     "🍳 Recipes",
+     "🌱 Self Improvement",
+     "Archive",
+     "Search",
+     "Series"
+    ],
+    "fields": [
+     "Your name",
+     "Share your thoughts..."
+    ],
+    "missing_terms": [
+     "Like",
+     "👍",
+     "React"
+    ]
+   }
+  }
+ ]
+}
