@@ -2,7 +2,7 @@
 import hashlib, json, os, platform, uuid
 from . import __version__
 
-KEY = os.environ.get("JEVQA_POSTHOG_KEY", "phc_trZx8ZAksmG5Bu9GvVQKv3FgAMg7prKK8nawKcKaWFdM")   # public write-only project key
+KEY = os.environ.get("JEVQA_POSTHOG_KEY", "phc_pNFJdSzEDFo7XZSom3bvsxLtivVzJqQRNPzVT2qs5ree")   # public write-only project key
 HOST = "https://eu.i.posthog.com"
 
 
