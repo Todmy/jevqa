@@ -1,24 +1,66 @@
 # X launch copy
 
+## FINAL PICK (validated 2026-09-20: numbers vs BENCHMARK.md, no em dashes/arrows/hedges, char limits)
+
+### Reply under Rafal (post first) = C-B, 234 chars
+
+Built the open-source version: jevqa. No tests to write: URL + README, 5–6 minutes, $0.29–0.41/app. Across 20 apps it found 22% of 107 bugs. About 1 in 8 reports is real; weak on numbers and permissions. https://github.com/Todmy/jevqa
+
+### Standalone post (30 min later) = A-B, 263 chars
+
+Opus 5 found 17% of known bugs for $3.20/app. Tuned jevqa found 24% for $0.37 on the same 10 development apps.
+
+Across all 20 apps, jevqa found 22%. About 1 in 8 reports is real. Weak on numbers and permissions.
+
+No tests to write.
+
+https://github.com/Todmy/jevqa
+
+### Thread = A post 1 (trimmed) + B posts 2-5
+
+1. Jev made browser testing cheap enough to run before QA.
+
+I open-sourced a monkey tester that does it: 22% of 107 known bugs across 20 apps, $0.29–0.41 per app. About 1 in 8 reports is real.
+
+2. This is for the app you made with Lovable, Bolt, Replit, or Claude Code and want to check before anyone sees it.
+
+One command. A URL and the README you already have. No tests to write. The run takes 5–6 minutes; the report takes ninety seconds to skim.
+
+3. The useful trick is absence.
+
+If the spec says users can edit a post but no Edit control exists on any screen, jevqa reports it. Every tester can click a broken button. This one notices the button never shipped.
+
+4. Same 10 development apps: tuned jevqa found 24% at $0.37/app. Opus 5 found 17% at $3.20; Sonnet 5 found 10% at $1.16. Caveat: jevqa was tuned there, they were not. On the untouched holdout it found 18–20%.
+
+5. Local CLI or GitHub Action. No test suite required.
+
+Code and the reproducible benchmark:
+
+https://github.com/Todmy/jevqa
+
+---
+
+# Codex variants (source)
+
 ## A. Standalone post
 
 ### Variant A
 
 Jev made browser testing cheap enough to run before QA.
 
-jevqa takes a URL and a spec. It found 22% of 107 known bugs across 20 apps for $0.29–0.41/app.
+On the same 10 development apps, tuned jevqa found 24% at $0.37/app. Opus 5 found 17% at $3.20.
 
-About 1 in 8 reports is real. It's weak on numeric correctness and permissions.
+Across all 20 apps: 22%. About 1 in 8 reports is real; weak on numbers and permissions.
 
 https://github.com/Todmy/jevqa
 
 ### Variant B
 
-Claude Opus 5 with Playwright MCP cost $3.20/app and found 17% of known bugs on our development split.
+Opus 5 found 17% of known bugs for $3.20/app. Tuned jevqa found 24% for $0.37 on the same 10 development apps.
 
-The Jev-guided monkey found 24% for $0.37/app.
+Across all 20 apps, jevqa found 22%. About 1 in 8 reports is real. Weak on numbers and permissions.
 
-I open-sourced it. About 1 in 8 reports is real. Weak on numeric correctness and permissions.
+No tests to write.
 
 https://github.com/Todmy/jevqa
 
@@ -28,31 +70,35 @@ https://github.com/Todmy/jevqa
 
 **Post 1**
 
-Jev made adversarial browser testing cheap enough to run before QA.
+Jev made browser testing cheap enough to run before QA.
 
-I built jevqa, an open-source monkey tester that reads the spec and tries to break the deployed app. The benchmark is public, including the ugly numbers.
+Same 10 development apps: tuned jevqa found 24% at $0.37/app; Opus 5 found 17% at $3.20. Across all 20 apps, jevqa found 22%. About 1 in 8 reports is real.
+
+I open-sourced it.
 
 **Post 2**
 
-Give it a URL and the README or PRD the app was built from.
+Give jevqa a URL and the README you already have:
 
-Jev picks actions and judges each screen. Claude reads the spec once to make the checklist. No selectors or test scripts to maintain.
+`uvx jevqa run <url> --spec README.md`
+
+No tests or selectors to write. In 5–6 minutes it leaves a report you can skim in ninety seconds before showing the app to anyone.
 
 **Post 3**
 
-On WebTestBench, jevqa found 22% of 107 known bugs across 20 apps. A run takes 5–6 minutes and costs $0.29–0.41.
+Most testers can only break controls they find.
 
-Claude Opus 5 with Playwright MCP found 17% at $3.20/app on the development split.
+jevqa also reports the Edit, Delete, or Save control named in the spec that never appears anywhere in the app. That absence path is where a lot of obvious defects hide.
 
 **Post 4**
 
-About 1 in 8 reports maps to a confirmed defect. It's weak on numeric correctness and permissions.
+Jev is TypeSafe's System One model: it returns a probability or choice instead of text at $0.042 per million tokens, picks every action, and judges every screen; Claude reads the spec once to write the checklist.
 
-That's acceptable for a pre-QA report I can skim in ninety seconds. It isn't a QA replacement.
+It's weak on numeric correctness and permissions.
 
 **Post 5**
 
-Code, install instructions, raw methodology, and the benchmark:
+It also runs as a GitHub Action. Code, raw methodology, and the public benchmark:
 
 https://github.com/Todmy/jevqa
 
@@ -60,33 +106,33 @@ https://github.com/Todmy/jevqa
 
 **Post 1**
 
-Most browser testers can only break controls they find.
+Same 10 development apps: tuned jevqa found 24% of known bugs at $0.37/app. Opus 5 found 17% at $3.20; Sonnet 5 found 10% at $1.16.
 
-jevqa also reports the edit or delete control named in the spec that never appears. That absence path helped it find 22% of 107 known bugs across 20 apps. I open-sourced it.
+Across all 20 apps, jevqa found 22%. About 1 in 8 reports is real. I open-sourced it.
 
 **Post 2**
 
-The command is:
+This is for the app you made with Lovable, Bolt, Replit, or Claude Code and want to check before anyone sees it.
 
-`uvx jevqa run http://localhost:3000 --spec README.md`
-
-It explores for up to 50 actions, replays suspected failures, then writes a report with one sentence and a screenshot per finding.
+One command. A URL and the README you already have. No tests to write. The run takes 5–6 minutes; the report takes ninety seconds to skim.
 
 **Post 3**
 
-A full run takes 5–6 minutes and costs $0.29–0.41.
+The useful trick is absence.
 
-We also ran Claude Opus 5 with Playwright MCP on the development split. It found 17% at $3.20/app. Same rough recall band, much more money.
+If the spec says users can edit a post but no Edit control exists on any screen, jevqa reports it. Every tester can click a broken button. This one notices the button never shipped.
 
 **Post 4**
 
-The catch is precision. About 1 in 8 reports is a confirmed defect. It's also weak on numeric correctness and permissions.
+The development comparison has a caveat: jevqa was tuned there; Opus and Sonnet weren't. On the untouched holdout, jevqa found 18–20%.
 
-Use it to clear obvious failures before QA, not to replace QA.
+Jev returns a probability or choice instead of text at $0.042 per million tokens; Claude only writes the checklist.
 
 **Post 5**
 
-MIT, source, GitHub Action, and the public benchmark:
+Local CLI or GitHub Action. No test suite required.
+
+Code and the reproducible benchmark:
 
 https://github.com/Todmy/jevqa
 
@@ -94,8 +140,8 @@ https://github.com/Todmy/jevqa
 
 ### Variant A
 
-I built the open-source version: jevqa. It found 22% of 107 known bugs across 20 apps at $0.29–0.41/app. About 1 in 8 reports is real; it's weak on numeric correctness and permissions. Public benchmark: https://github.com/Todmy/jevqa
+Open-sourced jevqa. Same 10 development apps: tuned jevqa found 24% at $0.37/app; Opus 5 found 17% at $3.20. All 20 apps: 22%. About 1 in 8 reports is real. Weak on numbers and permissions. https://github.com/Todmy/jevqa
 
 ### Variant B
 
-This is now open source as jevqa: URL plus spec, then Jev tries to break the app. 22% of 107 known bugs across 20 apps. About 1 in 8 reports is real; numeric correctness and permissions are weak. https://github.com/Todmy/jevqa
+Built the open-source version: jevqa. No tests to write: URL + README, 5–6 minutes, $0.29–0.41/app. Across 20 apps it found 22% of 107 bugs. About 1 in 8 reports is real; weak on numbers and permissions. https://github.com/Todmy/jevqa
