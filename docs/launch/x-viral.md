@@ -4,9 +4,13 @@
 
 ### Reply under Rafal (post first) = C-B, 234 chars
 
+WHERE: https://x.com/rafalwilinski/status/2100882207879434359 -> click Reply on his post (not Quote, not a new post). Log in as your own account first.
+
 Built the open-source version: jevqa. No tests to write: URL + README, 5–6 minutes, $0.29–0.41/app. Across 20 apps it found 22% of 107 bugs. About 1 in 8 reports is real; weak on numbers and permissions. https://github.com/Todmy/jevqa
 
 ### Standalone post (30 min later) = A-B, 263 chars
+
+WHERE: your own profile, new post. Optional: attach Rafal's post as a quote (paste his URL as the last line) so his readers see it.
 
 Opus 5 found 17% of known bugs for $3.20/app. Tuned jevqa found 24% for $0.37 on the same 10 development apps.
 
@@ -17,6 +21,10 @@ No tests to write.
 https://github.com/Todmy/jevqa
 
 ### Thread = A post 1 (trimmed) + B posts 2-5
+
+WHERE: your own profile, new post; compose post 1, press the + button under it for posts 2-5, publish all at once. Post the thread instead of the standalone if you can only do one.
+
+AFTER: DM @studio_yebisu (text in x-thread.md block 3). Optional friendly reply under https://x.com/o_kwasniewski/status/2100966838905585687 (x-thread.md block 4).
 
 1. Jev made browser testing cheap enough to run before QA.
 
