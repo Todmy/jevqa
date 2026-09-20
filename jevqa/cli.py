@@ -6,6 +6,16 @@ GOAL = ("Explore this app like a manual tester hunting for bugs; try to complete
         "(fill whole forms and submit, open details, use filters). The app was built from this spec: {spec}")
 
 
+def ensure_browser():
+    """First run: fetch Chromium for Playwright (~150 MB, once per machine)."""
+    import subprocess
+    from playwright.sync_api import sync_playwright
+    with sync_playwright() as p:
+        if Path(p.chromium.executable_path).exists(): return
+    print("jevqa: downloading Chromium for Playwright (once)...")
+    subprocess.run([sys.executable, "-m", "playwright", "install", "chromium"], check=True)
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(prog="jevqa", description="Jev-guided monkey tester: finds missing features, validation gaps and dead controls before QA does.")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -23,6 +33,7 @@ def main(argv=None):
         if a.reset and config.PATH.exists(): config.PATH.unlink()
         config.ensure(); config.show(); return
     config.ensure()
+    ensure_browser()
     from . import tester, report, telemetry
     telemetry.track("run_started", steps=a.steps, backend="cli" if not os.environ.get("ANTHROPIC_API_KEY") else "api")
     spec = Path(a.spec).read_text()

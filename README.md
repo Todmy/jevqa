@@ -63,7 +63,7 @@ Two keys, asked for on first run and stored in `~/.config/jevqa/config.json` (en
 - **TypeSafe** — [console.typesafe.ai](https://console.typesafe.ai). Jev does the exploring and judging: ~$0.05–0.10 per app.
 - **Claude** — an [Anthropic API key](https://console.anthropic.com), or pick "use the Claude Code CLI" if you have it logged in. Three calls per app: ~$0.25.
 
-Browser: `uvx --with playwright playwright install chromium` once per machine. `jevqa config` shows or resets the keys.
+Chromium for Playwright is downloaded automatically on the first run (~150 MB, once per machine). `jevqa config` shows or resets the keys.
 
 | flag | default | |
 |---|---|---|
