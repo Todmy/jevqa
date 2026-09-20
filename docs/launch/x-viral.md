@@ -6,7 +6,7 @@
 
 WHERE: https://x.com/rafalwilinski/status/2100882207879434359 -> click Reply on his post (not Quote, not a new post). Log in as your own account first.
 
-Open-sourced the same idea: jevqa. On 10 WebTestBench apps it found 24% of known bugs at $0.37/app. Claude Opus 5: 17% at $3.20. Sonnet 5: 10% at $1.16. About 1 in 8 reports is real, and we publish that. https://github.com/Todmy/jevqa
+Claude Opus 5: 17% of known bugs at $3.20/app. Sonnet 5: 10% at $1.16. Jev-guided jevqa: 24% at $0.37, same 10 WebTestBench apps. Open-sourced it today. About 1 in 8 reports is real, and we publish that. https://github.com/Todmy/jevqa
 
 If asked about tuning: jevqa was tuned on those 10 apps, Opus/Sonnet were not; on the untouched holdout it finds 18-20%. Full table in BENCHMARK.md.
 
