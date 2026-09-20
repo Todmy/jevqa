@@ -1,6 +1,6 @@
 [project]
 name = "jevqa"
-version = "0.1.0"
+version = "0.1.1"
 description = "Autonomous pre-QA bug hunter for web apps: Jev (TypeSafe) picks actions and judges screens, Claude reads the spec once."
 readme = "README.md"
 requires-python = ">=3.12"

@@ -35,10 +35,10 @@ def ensure():
     for k, v in cfg.items():
         if k in KEYS and v: os.environ.setdefault(k, v)
     missing = [k for k in KEYS if not os.environ.get(k)]
-    if "ANTHROPIC_API_KEY" in missing and cfg.get("CLAUDE_BACKEND") == "cli" and shutil.which("claude"): missing.remove("ANTHROPIC_API_KEY")
+    if "ANTHROPIC_API_KEY" in missing and (os.environ.get("CLAUDE_BACKEND") or cfg.get("CLAUDE_BACKEND")) == "cli" and shutil.which("claude"): missing.remove("ANTHROPIC_API_KEY")
     if not missing: return
     if not sys.stdin.isatty():
-        sys.exit("missing: " + ", ".join(missing) + f". Set them as env vars / secrets, or run `jevqa config` once on a machine with a terminal (stored in {PATH}).")
+        sys.exit("missing: " + ", ".join(missing) + f". Set them as env vars / secrets (or CLAUDE_BACKEND=cli to use the Claude Code CLI), or run `jevqa config` once on a machine with a terminal (stored in {PATH}).")
     from . import telemetry; telemetry.track("keys_prompted", missing=missing)
     changed = False
     for k in missing:
